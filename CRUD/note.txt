@@ -1,0 +1,23 @@
+connect
+$mysqli= new mysqli('localhost','root','','crud')or die("Could not connect to mysql".mysqli_error($mysqli));
+
+insert
+mysqli_query($mysqli,"INSERT INTO data(name,location) VALUES('$name','$location')") or die(mysqli_error($mysqli));
+
+select
+$result = mysqli_query($mysqli,"SELECT * FROM data") or die(mysqli_error($mysqli));
+
+delete
+mysqli_query($mysqli,"DELETE FROM data WHERE id=$id") or die(mysqli_error($mysqli));
+
+fetch
+<table>
+  <?php
+    while($row = $result->fetch_assoc()):?>
+        <tr>
+            <td><?php echo $row['name'];?></td>
+            <td><?php echo $row['location'];?></td>
+            <td></td>
+         </tr>
+    <?php endwhile;?>
+</table>
